@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody rigid;
     Animator anim;
+    SpriteRenderer spriteRenderer;
 
     public float JumpPower;
     public float MoveSpeed;
@@ -15,6 +16,8 @@ public class PlayerMove : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         IsJumping = false;
     }
 
@@ -26,10 +29,20 @@ public class PlayerMove : MonoBehaviour
 
     void Move()
     {
-        float h = Input.GetAxis("Horizontal");
+        float h = Input.GetAxisRaw("Horizontal");
         // float v = Input.GetAxis("Vertical");
 
         transform.Translate((new Vector3(h, 0, 0) * MoveSpeed));
+        Debug.Log(Mathf.Abs(Input.GetAxisRaw("Horizontal")));
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
+            anim.SetBool("isWalk", true);
+        else
+            anim.SetBool("isWalk", false);
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            spriteRenderer.flipX = true;
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+            spriteRenderer.flipX = false;
 
     }
 
