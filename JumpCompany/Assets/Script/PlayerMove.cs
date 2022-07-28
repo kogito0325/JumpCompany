@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody rigid;
+    Animator anim;
 
     public float JumpPower;
     public float MoveSpeed;
@@ -13,6 +14,7 @@ public class PlayerMove : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         IsJumping = false;
     }
 
@@ -25,9 +27,9 @@ public class PlayerMove : MonoBehaviour
     void Move()
     {
         float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        // float v = Input.GetAxis("Vertical");
 
-        transform.Translate((new Vector3(h, 0, v) * MoveSpeed));
+        transform.Translate((new Vector3(h, 0, 0) * MoveSpeed));
 
     }
 
