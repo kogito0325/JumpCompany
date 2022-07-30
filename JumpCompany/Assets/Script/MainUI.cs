@@ -19,6 +19,7 @@ public class MainUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public BtnType currentType;
     public Transform ButtonScale;
     Vector3 defaultScale;
+
     public CanvasGroup MainGroup;
     public CanvasGroup BeforeGroup;
 
@@ -26,6 +27,7 @@ public class MainUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         defaultScale = ButtonScale.localScale;
     }
+
     public void OnBtnClick()
     {
         switch (currentType)
@@ -61,6 +63,7 @@ public class MainUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         cg.interactable = true;
         cg.blocksRaycasts = true;
     }
+
     public void CanvasGroupOff(CanvasGroup cg)
     {
         cg.alpha = 0;
