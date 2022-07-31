@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637946017437090047
+      ticks: 637948828080187928
     m_Hash: 2706956595
   m_LockFileStatus:
     m_FilePath: D:/Unity/Personal_Projects/JumpCompany/JumpCompany/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637946017437091203
+      ticks: 637948828080197905
     m_Hash: 2752987796
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}

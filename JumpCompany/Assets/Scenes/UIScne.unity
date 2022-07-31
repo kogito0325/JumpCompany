@@ -878,7 +878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e1a89cb4e0527146b4333ebd15b557d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 3
+  currentType: 4
   ButtonScale: {fileID: 611610534}
   MainGroup: {fileID: 1897068776}
   BeforeGroup: {fileID: 1839190764}
