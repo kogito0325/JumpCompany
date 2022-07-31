@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Character
 {
-    PlayerA, PlayerB, PlayerC, PlayerD, PlayerE
+    LBG, JJH, HMJ
 }
 public class DataMgr : MonoBehaviour
 {
