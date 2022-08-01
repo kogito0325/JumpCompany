@@ -615,4 +615,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/UIScne.unity
   - Assets/Scenes/MainGame.unity
-  playerPath: "C:/Users/qasw4/OneDrive/\uBC14\uD0D5 \uD654\uBA74/\uC0C8 \uD3F4\uB354/JumpCompany.exe"
+  playerPath: "C:/Users/qasw4/OneDrive/\uBC14\uD0D5 \uD654\uBA74/JumpCompanySample/JumpCompany.exe"

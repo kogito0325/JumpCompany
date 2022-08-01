@@ -17,6 +17,7 @@ public class PlayerMove : MonoBehaviour
     public float MoveSpeed;
 
     private bool IsJumping;
+    private bool JumpReady;
 
     void Awake()
     {
@@ -27,6 +28,7 @@ public class PlayerMove : MonoBehaviour
 
 
         IsJumping = false;
+        JumpReady = false;
     }
 
     void Start()
@@ -47,7 +49,7 @@ public class PlayerMove : MonoBehaviour
 
     void Move()
     {
-        if (!IsJumping)
+        if (!IsJumping && !JumpReady)
         {
             float h = Input.GetAxisRaw("Horizontal");
             // float v = Input.GetAxis("Vertical");
@@ -73,7 +75,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !IsJumping)
         {
-            IsJumping = true;
+            JumpReady = true;
 
             anim.enabled = false;
             arrow.SetActive(true);
@@ -81,7 +83,7 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.Space) && IsJumping)
+        if (Input.GetKey(KeyCode.Space) && JumpReady)
         {
             if (JumpPower < 100)
                 JumpPower += 100 * Time.deltaTime;
@@ -101,7 +103,7 @@ public class PlayerMove : MonoBehaviour
             arrow.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90 - JumpDistance * 45 / 100);
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && IsJumping)
+        if (Input.GetKeyUp(KeyCode.Space) && JumpReady)
         {
             spriteRenderer.sprite = jumpSprites[1];
             if (JumpDistance < 0)
@@ -111,6 +113,9 @@ public class PlayerMove : MonoBehaviour
 
             rigid.AddForce(new Vector3(JumpDistance, JumpPower), ForceMode.Impulse);
             capsuleCollider.isTrigger = true;
+
+            JumpReady = false;
+            IsJumping = true;
 
             JumpDistance = 0;
             JumpPower = 0;
@@ -126,5 +131,11 @@ public class PlayerMove : MonoBehaviour
             IsJumping = false;
             anim.enabled = true;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (capsuleCollider.isTrigger && other.transform.tag == "Wall")
+            capsuleCollider.isTrigger = false;
     }
 }

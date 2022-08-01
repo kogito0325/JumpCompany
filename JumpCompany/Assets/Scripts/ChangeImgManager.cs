@@ -26,14 +26,18 @@ public class ChangeImgManager : MonoBehaviour
 
     public void SetNextIndex()
     {
-        if (characterIndex < characters.Length - 1)
+        if (characterIndex + 1 >= characters.Length)
+            characterIndex = 0;
+        else
             characterIndex += 1;
         ChangeCharacter();
     }
 
     public void SetPreviousIndex()
     {
-        if (characterIndex > 0)
+        if (characterIndex <= 0)
+            characterIndex = characters.Length - 1;
+        else
             characterIndex -= 1;
         ChangeCharacter();
     }
