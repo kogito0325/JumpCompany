@@ -9,6 +9,7 @@ public enum BtnType
     Setup,
     Sound,
     Arrow,
+    Reset,
     Back,
     Exit
 }
@@ -50,7 +51,11 @@ public class MainUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 CanvasGroupOn(MainGroup);
                 CanvasGroupOff(BeforeGroup);
                 break;
-            
+
+            case BtnType.Reset:
+                PlayerPrefs.DeleteAll();
+                break;
+
             case BtnType.Arrow:
                 break;
 

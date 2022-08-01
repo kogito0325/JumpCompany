@@ -5,10 +5,11 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     public Transform target;
+    public GameObject[] characters;
 
     private void Start()
     {
-
+        target = characters[PlayerPrefs.GetInt("character")].transform;
     }
 
     private void LateUpdate()

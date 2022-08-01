@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ChangeImgManager : MonoBehaviour
@@ -17,7 +17,6 @@ public class ChangeImgManager : MonoBehaviour
     {
         ChangeCharacter();
     }
-
 
     public void ChangeCharacter()
     {
@@ -37,5 +36,11 @@ public class ChangeImgManager : MonoBehaviour
         if (characterIndex > 0)
             characterIndex -= 1;
         ChangeCharacter();
+    }
+
+    public void SelectCharacter()
+    {
+        PlayerPrefs.SetInt("character", characterIndex);
+        SceneManager.LoadScene(1);
     }
 }
