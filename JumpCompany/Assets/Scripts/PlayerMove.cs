@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
         if (!IsJumping && !JumpReady)
         {
             float h = Input.GetAxisRaw("Horizontal");
-            // float v = Input.GetAxis("Vertical");
+            
 
             transform.Translate((new Vector3(h, 0, 0) * MoveSpeed * Time.deltaTime));
 
