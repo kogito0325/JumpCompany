@@ -61,9 +61,9 @@ public class PlayerMove : MonoBehaviour
             else
                 anim.SetBool("isWalk", false);
 
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow))
                 spriteRenderer.flipX = true;
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow))
                 spriteRenderer.flipX = false;
 
             if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow))
@@ -105,17 +105,22 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space) && JumpReady)
         {
-            spriteRenderer.sprite = jumpSprites[1];
-            if (JumpDistance < 0)
-                spriteRenderer.flipX = true;
-            else
-                spriteRenderer.flipX = false;
+            if (JumpPower > 20)
+            {
+                spriteRenderer.sprite = jumpSprites[1];
+                if (JumpDistance < 0)
+                    spriteRenderer.flipX = true;
+                else
+                    spriteRenderer.flipX = false;
 
-            rigid.AddForce(new Vector3(JumpDistance, JumpPower), ForceMode.Impulse);
-            capsuleCollider.isTrigger = true;
+                rigid.AddForce(new Vector3(JumpDistance, JumpPower), ForceMode.Impulse);
+                capsuleCollider.isTrigger = true;
+                IsJumping = true;
+            }
+            else
+                anim.enabled = true;
 
             JumpReady = false;
-            IsJumping = true;
 
             JumpDistance = 0;
             JumpPower = 0;
