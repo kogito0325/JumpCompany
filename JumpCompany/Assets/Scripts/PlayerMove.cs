@@ -12,12 +12,12 @@ public class PlayerMove : MonoBehaviour
     public Sprite[] jumpSprites;
     public GameObject arrow;
 
-    public float JumpPower;
-    public float JumpDistance;
-    public float MoveSpeed;
+    public float jumpPower;
+    public float jumpDistance;
+    public float moveSpeed;
 
-    private bool IsJumping;
-    private bool JumpReady;
+    private bool isJumping;
+    private bool jumpReady;
 
     void Awake()
     {
@@ -27,8 +27,8 @@ public class PlayerMove : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
 
 
-        IsJumping = false;
-        JumpReady = false;
+        isJumping = false;
+        jumpReady = false;
     }
 
     void Start()
@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
     {
         Move();
         Jump();
-        if (IsJumping && rigid.velocity.y < 0)
+        if (isJumping && rigid.velocity.y < 0)
         {
             spriteRenderer.sprite = jumpSprites[2];
             capsuleCollider.isTrigger = false;
@@ -49,12 +49,12 @@ public class PlayerMove : MonoBehaviour
 
     void Move()
     {
-        if (!IsJumping && !JumpReady)
+        if (!isJumping && !jumpReady)
         {
             float h = Input.GetAxisRaw("Horizontal");
             
 
-            transform.Translate((new Vector3(h, 0, 0) * MoveSpeed * Time.deltaTime));
+            transform.Translate((new Vector3(h, 0, 0) * moveSpeed * Time.deltaTime));
 
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
                 anim.SetBool("isWalk", true);
@@ -73,9 +73,9 @@ public class PlayerMove : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !IsJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
-            JumpReady = true;
+            jumpReady = true;
 
             anim.enabled = false;
             arrow.SetActive(true);
@@ -83,47 +83,47 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.Space) && JumpReady)
+        if (Input.GetKey(KeyCode.Space) && jumpReady)
         {
-            if (JumpPower < 100)
-                JumpPower += 100 * Time.deltaTime;
+            if (jumpPower < 100)
+                jumpPower += 100 * Time.deltaTime;
 
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                if (JumpDistance > -100)
-                    JumpDistance -= 100 * Time.deltaTime;
+                if (jumpDistance > -100)
+                    jumpDistance -= 100 * Time.deltaTime;
             }
             else if (Input.GetKey(KeyCode.RightArrow))
             {
-                if (JumpDistance < 100)
-                    JumpDistance += 100 * Time.deltaTime;
+                if (jumpDistance < 100)
+                    jumpDistance += 100 * Time.deltaTime;
             }
 
-            arrow.transform.localScale = new Vector3(JumpPower/100, arrow.transform.localScale.y);
-            arrow.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90 - JumpDistance * 45 / 100);
+            arrow.transform.localScale = new Vector3(jumpPower/100, arrow.transform.localScale.y);
+            arrow.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90 - jumpDistance * 45 / 100);
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) && JumpReady)
+        if (Input.GetKeyUp(KeyCode.Space) && jumpReady)
         {
-            if (JumpPower > 20)
+            if (jumpPower > 20)
             {
                 spriteRenderer.sprite = jumpSprites[1];
-                if (JumpDistance < 0)
+                if (jumpDistance < 0)
                     spriteRenderer.flipX = true;
                 else
                     spriteRenderer.flipX = false;
 
-                rigid.AddForce(new Vector3(JumpDistance, JumpPower), ForceMode.Impulse);
+                rigid.AddForce(new Vector3(jumpDistance, jumpPower), ForceMode.Impulse);
                 capsuleCollider.isTrigger = true;
-                IsJumping = true;
+                isJumping = true;
             }
             else
                 anim.enabled = true;
 
-            JumpReady = false;
+            jumpReady = false;
 
-            JumpDistance = 0;
-            JumpPower = 0;
+            jumpDistance = 0;
+            jumpPower = 0;
 
             arrow.SetActive(false);
         }
@@ -131,9 +131,9 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (IsJumping && collision.transform.tag == "Ground")
+        if (isJumping && collision.transform.tag == "Ground")
         {
-            IsJumping = false;
+            isJumping = false;
             anim.enabled = true;
         }
     }
