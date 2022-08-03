@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     SpriteRenderer spriteRenderer;
     CapsuleCollider capsuleCollider;
     
+    public GameManager manager;
     public Sprite[] jumpSprites;
     public GameObject arrow;
 
@@ -142,5 +143,14 @@ public class PlayerMove : MonoBehaviour
     {
         if (capsuleCollider.isTrigger && other.transform.tag == "Wall")
             capsuleCollider.isTrigger = false;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "FloorLine")
+        {
+            other.GetComponent<BoxCollider>().enabled = false;
+            manager.score += 1;
+        }
     }
 }

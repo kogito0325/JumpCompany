@@ -6,14 +6,15 @@ TagManager:
   tags:
   - Ground
   - Wall
+  - FloorLine
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - BackGround
+  - 
   - Water
   - UI
-  - Player
+  - 
   - 
   - 
   - 
@@ -42,10 +43,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: BackGround
-    uniqueID: 2479123761
-    locked: 0
-  - name: Player
-    uniqueID: 2141507979
     locked: 0

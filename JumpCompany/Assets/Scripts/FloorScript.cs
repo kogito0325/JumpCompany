@@ -5,10 +5,16 @@ using UnityEngine;
 public class FloorScript : MonoBehaviour
 {
     public GameObject[] settableObjects;
+    public GameObject floor;
     public Transform setPosition;
 
     int[] x_line1 = new int[3] { -6, 0, 6 };
     int[] x_line2 = new int[3] { -7, -1, 5 };
+
+    private void Awake()
+    {
+
+    }
 
     void Start()
     {
@@ -21,13 +27,13 @@ public class FloorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     Vector3 SetObjectsPosition(int i)
     {
         float x_pos = i % 2 == 0 ? x_line1[Random.Range(0, x_line1.Length)] : x_line2[Random.Range(0, x_line2.Length)];
-        float y_pos = i * 4;
+        float y_pos = i * 3.5f + setPosition.position.y;
 
         return new Vector3(x_pos, y_pos, setPosition.position.z);
     }
