@@ -216,6 +216,7 @@ MonoBehaviour:
   - {fileID: 677671052638385073, guid: 10addbac92b8748479192d95d06210d5, type: 3}
   floor: {fileID: 5325008432589719993}
   setPosition: {fileID: 5325008433269445201}
+  last_pos_x_index: 0
 --- !u!1 &5325008432476533576
 GameObject:
   m_ObjectHideFlags: 0

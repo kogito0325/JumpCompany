@@ -7,6 +7,7 @@ public class FloorScript : MonoBehaviour
     public GameObject[] settableObjects;
     public GameObject floor;
     public Transform setPosition;
+    public int last_pos_x_index;
 
     int[] x_line1 = new int[3] { -6, 0, 6 };
     int[] x_line2 = new int[3] { -7, -1, 5 };
@@ -32,7 +33,9 @@ public class FloorScript : MonoBehaviour
 
     Vector3 SetObjectsPosition(int i)
     {
-        float x_pos = i % 2 == 0 ? x_line1[Random.Range(0, x_line1.Length)] : x_line2[Random.Range(0, x_line2.Length)];
+        int pos_x_index = Random.Range(0, x_line1.Length);
+
+        float x_pos = i % 2 == 0 ? x_line1[pos_x_index] : x_line2[pos_x_index];
         float y_pos = i * 3.5f + setPosition.position.y;
 
         return new Vector3(x_pos, y_pos, setPosition.position.z);
