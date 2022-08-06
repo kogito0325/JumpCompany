@@ -26,14 +26,34 @@ public class MainUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     public AudioSource BGMsource;
     public AudioSource SEsource;
+    
     public Scrollbar Scrollbar;
-
+    
     public CanvasGroup MainGroup;
     public CanvasGroup BeforeGroup;
 
+    public Sprite[] BGM;
+    public Sprite[] SE;
+    public int BGMMuteIndex = 0;
+    public int SEMuteIndex = 0;
+
+    public GameObject nowBGM;
+    public GameObject nowSE;
+
+
+    public void ChangeBGMMuteSprite()
+    {
+        nowBGM.GetComponent<Image>().sprite = BGM[BGMMuteIndex];
+    }
+    public void ChangeSEMuteSprite()
+    {
+        nowSE.GetComponent<Image>().sprite = SE[SEMuteIndex];
+    }
     public void Start()
     {
         defaultScale = ButtonScale.localScale;
+        ChangeBGMMuteSprite();
+        ChangeSEMuteSprite();
     }
 
     public void SetBGMVolume(float volume)
@@ -71,12 +91,15 @@ public class MainUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     PlayerPrefs.SetFloat("BGM", BGMsource.volume);
                     BGMsource.volume = 0;
                     Scrollbar.value = BGMsource.volume;
+                    BGMMuteIndex = 0;
                 }
                 else
                 {
                     BGMsource.volume = PlayerPrefs.GetFloat("BGM");
                     Scrollbar.value = BGMsource.volume;
+                    BGMMuteIndex += 1;
                 }
+                ChangeBGMMuteSprite();
                 break;
 
             case BtnType.SEmute:
@@ -85,12 +108,15 @@ public class MainUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                     PlayerPrefs.SetFloat("SE", SEsource.volume);
                     SEsource.volume = 0;
                     Scrollbar.value = SEsource.volume;
+                    SEMuteIndex = 0;
                 }
                 else
                 {
                     SEsource.volume = PlayerPrefs.GetFloat("SE");
                     Scrollbar.value = SEsource.volume;
+                    SEMuteIndex += 1;
                 }
+                ChangeSEMuteSprite();
                 break;
 
             case BtnType.Back:
