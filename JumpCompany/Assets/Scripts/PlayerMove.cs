@@ -132,7 +132,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (isJumping && collision.transform.tag == "Ground")
+        if ((isJumping && collision.transform.tag == "Ground") || (isJumping && collision.transform.tag == "FloorGround"))
         {
             isJumping = false;
             anim.enabled = true;
@@ -151,6 +151,12 @@ public class PlayerMove : MonoBehaviour
         {
             other.GetComponent<BoxCollider>().enabled = false;
             manager.score += 1;
+        }
+
+        if (other.transform.tag == "FloorGround" && rigid.velocity.y > 0)
+        {
+            other.GetComponent<BoxCollider>().isTrigger = false;
+
         }
     }
 }
