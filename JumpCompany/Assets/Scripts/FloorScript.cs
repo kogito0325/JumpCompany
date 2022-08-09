@@ -9,6 +9,7 @@ public class FloorScript : MonoBehaviour
     public Transform setPosition;
     public int last_pos_x_index;
 
+
     int[] x_line1 = new int[3] { -5, 0, 5 };
     int[] x_line2 = new int[3] { -6, -1, 4 };
 
@@ -25,6 +26,10 @@ public class FloorScript : MonoBehaviour
             Instantiate(settableObjects[Random.Range(0, settableObjects.Length)], SetObjectsPosition(i), Quaternion.Euler(0, 90, 0), setPosition);
         }
         PlayerPrefs.SetInt("posX", last_pos_x_index);
+        
+        
+
+
     }
 
     // Update is called once per frame
@@ -32,7 +37,6 @@ public class FloorScript : MonoBehaviour
     {
 
     }
-
     Vector3 SetObjectsPosition(int i)
     {
         int pos_x_index;
@@ -48,4 +52,5 @@ public class FloorScript : MonoBehaviour
 
         return new Vector3(x_pos, y_pos, setPosition.position.z);
     }
+
 }
