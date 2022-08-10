@@ -10,8 +10,8 @@ public class FloorScript : MonoBehaviour
     public int last_pos_x_index;
 
 
-    int[] x_line1 = new int[3] { -5, 0, 5 };
-    int[] x_line2 = new int[3] { -6, -1, 4 };
+    int[] x_line1 = new int[3] { -6, 0, 6 };
+    int[] x_line2 = new int[3] { -7, -1, 5 };
 
     private void Awake()
     {

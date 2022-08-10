@@ -1466,10 +1466,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1484635843}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c7cef5081538b04b9fa8835513597e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ec22e439ebca3c4d8d725d942d0f2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cup: {fileID: 1609740747081417249, guid: c9fd1d0344277334492903ebe5839433, type: 3}
+  Drawer: {fileID: 0}
+  Papers: {fileID: 0}
 --- !u!4 &1484635845
 Transform:
   m_ObjectHideFlags: 0
@@ -1493,11 +1494,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1484635843}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9cbb5e383165244e87a01967ef1e601, type: 3}
+  m_Script: {fileID: 11500000, guid: 925009041e986db4ab598eaa1945826d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Desk: {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
-  Bag: {fileID: 2539132845001718778, guid: a23d64cf69175f341a1c6b5ba7bc231c, type: 3}
+  Cup: {fileID: 0}
 --- !u!114 &1484635847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,11 +1507,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1484635843}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46288fb8fef777c49a22e3c589eb9644, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1a58f1dbf8c1b4899814e35bfc8672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Drawer: {fileID: 8019034599151724160, guid: 38548f1a0de7cf14db9ca80b03e0e8ec, type: 3}
-  Papers: {fileID: 4818848198513392974, guid: b7bfd8e0c2597874fbf5486b609c1e90, type: 3}
+  Desk: {fileID: 0}
+  Bag: {fileID: 0}
 --- !u!1 &1704299889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4013765071569482859, guid: 4d5bdf3fa46923a47b47631650863dec, type: 3}
