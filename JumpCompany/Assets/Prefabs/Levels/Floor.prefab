@@ -216,6 +216,8 @@ MonoBehaviour:
   - {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
   - {fileID: 6628304974045516940, guid: a2d4ab878bc40124faaaba3ae36a804a, type: 3}
   - {fileID: 8019034599151724160, guid: 38548f1a0de7cf14db9ca80b03e0e8ec, type: 3}
+  Obstacles:
+  - {fileID: 1609740747081417249, guid: c9fd1d0344277334492903ebe5839433, type: 3}
   floor: {fileID: 5325008432589719993}
   setPosition: {fileID: 5325008433269445201}
   last_pos_x_index: 0

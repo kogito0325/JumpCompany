@@ -59,14 +59,14 @@
     <Compile Include="Assets\Scripts\ChangeImgManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\Tester.cs" />
+    <Compile Include="Assets\Scripts\CupScript.cs" />
     <Compile Include="Assets\Scripts\CameraMove.cs" />
     <Compile Include="Assets\Scripts\MainUI.cs" />
+    <Compile Include="Assets\Scripts\PapersScript.cs" />
+    <Compile Include="Assets\Scripts\BagScript.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\FloorScript.cs" />
     <Compile Include="Assets\Scripts\Soundmanager.cs" />
-    <Compile Include="Assets\Scripts\BagScript.cs" />
-    <Compile Include="Assets\Scripts\CupScript.cs" />
-    <Compile Include="Assets\Scripts\PapersScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

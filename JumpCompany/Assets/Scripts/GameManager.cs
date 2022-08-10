@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject[] characters;
     public GameObject floor;
+    public GameObject nowCharacter;
     public Text scoreText;
 
     public int floorNumber = 1;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         }
 
         characters[PlayerPrefs.GetInt("character")].SetActive(true);
+        nowCharacter = characters[PlayerPrefs.GetInt("character")];
 
     }
     // Start is called before the first frame update
@@ -47,8 +49,6 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-
-        // µð¹ö±×
         CheckNextFloor();
     }
 
@@ -67,10 +67,32 @@ public class GameManager : MonoBehaviour
     {
         if (score > previousScore)
         {
-            UpdateScoreText();
             previousScore = score;
+            switch (PlayerPrefs.GetInt("character"))
+            {
+                case 0:
+                    PlayerPrefs.SetInt("chracter_0", score);
+                    break;
+
+                case 1:
+                    PlayerPrefs.SetInt("chracter_1", score);
+                    break;
+
+                case 2:
+                    PlayerPrefs.SetInt("chracter_2", score);
+                    break;
+
+                case 3:
+                    PlayerPrefs.SetInt("chracter_3", score);
+                    break;
+
+                case 4:
+                    PlayerPrefs.SetInt("chracter_4", score);
+                    break;
+            }
             BuildNewFloor();
         }
+        UpdateScoreText();
     }
 
     void UpdateScoreText()

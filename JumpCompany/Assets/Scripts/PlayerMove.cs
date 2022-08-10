@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody rigid;
     Animator anim;
     SpriteRenderer spriteRenderer;
-    CapsuleCollider capsuleCollider;
+    BoxCollider boxCollider;
     
     public GameManager manager;
     public Sprite[] jumpSprites;
@@ -25,7 +25,7 @@ public class PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        capsuleCollider = GetComponent<CapsuleCollider>();
+        boxCollider = GetComponent<BoxCollider>();
 
 
         isJumping = false;
@@ -44,8 +44,9 @@ public class PlayerMove : MonoBehaviour
         if (isJumping && rigid.velocity.y < 0)
         {
             spriteRenderer.sprite = jumpSprites[2];
-            capsuleCollider.isTrigger = false;
+            boxCollider.isTrigger = false;
         }
+        manager.score = (int)transform.position.y / manager.floorHeight + 1;
     }
 
     void Move()
@@ -115,7 +116,7 @@ public class PlayerMove : MonoBehaviour
                     spriteRenderer.flipX = false;
 
                 rigid.AddForce(new Vector3(jumpDistance, jumpPower), ForceMode.Impulse);
-                capsuleCollider.isTrigger = true;
+                boxCollider.isTrigger = true;
                 isJumping = true;
             }
             else
@@ -141,18 +142,12 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (capsuleCollider.isTrigger && other.transform.tag == "Wall")
-            capsuleCollider.isTrigger = false;
+        if (boxCollider.isTrigger && other.transform.tag == "Wall")
+            boxCollider.isTrigger = false;
     }
 
     private void OnTriggerExit(Collider other)
-    {
-        if (other.transform.tag == "FloorLine")
-        {
-            other.GetComponent<BoxCollider>().enabled = false;
-            manager.score += 1;
-        }
-
+    { 
         if (other.transform.tag == "FloorGround" && rigid.velocity.y > 0)
         {
             other.GetComponent<BoxCollider>().isTrigger = false;

@@ -4,38 +4,28 @@ using UnityEngine;
 
 public class CupScript : MonoBehaviour
 {
-    public GameObject Cup;
-    Rigidbody rigid;
-
-
-    Vector3 pos = new Vector3(0, 10, 0);
+    public Rigidbody rigid;
     private void Start()
     {
-        FallCup();
+        rigid = GetComponent<Rigidbody>();
     }
-    void FallCup()
+
+    private void Update()
     {
-        Instantiate(Cup, pos, Quaternion.identity);
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" || other.gameObject.tag == "FloorGround")
+        if(other.gameObject.tag == "Player" || other.gameObject.tag == "GameManager")
         {
-            GetComponent<CapsuleCollider>().isTrigger = false;
+            if (other.gameObject.tag == "Player")
+            {
+                other.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                other.GetComponent<Rigidbody>().AddForce(Vector3.down);
+            }
+
+            Destroy(gameObject);
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.tag == "FloorGround")
-        {
-            Destroy(this.gameObject);
-        }
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
 }

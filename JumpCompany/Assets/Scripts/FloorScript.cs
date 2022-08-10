@@ -5,6 +5,7 @@ using UnityEngine;
 public class FloorScript : MonoBehaviour
 {
     public GameObject[] settableObjects;
+    public GameObject[] Obstacles;
     public GameObject floor;
     public Transform setPosition;
     public int last_pos_x_index;
@@ -26,7 +27,9 @@ public class FloorScript : MonoBehaviour
             Instantiate(settableObjects[Random.Range(0, settableObjects.Length)], SetObjectsPosition(i), Quaternion.Euler(0, 90, 0), setPosition);
         }
         PlayerPrefs.SetInt("posX", last_pos_x_index);
-        
+
+        if (Random.Range(0, 5) < 5)
+            Instantiate(Obstacles[0], new Vector3(Random.Range(-4f, 4f), setPosition.position.y, setPosition.position.z), Quaternion.identity, setPosition);
         
 
 
