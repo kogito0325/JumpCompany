@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -39,13 +40,20 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        // 이동
         Move();
+
+        // 점프
         Jump();
+
+        // 점프 중 하강하는 모션
         if (isJumping && rigid.velocity.y < 0)
         {
             spriteRenderer.sprite = jumpSprites[2];
             boxCollider.isTrigger = false;
         }
+
+        // 현재 층 계산
         manager.score = (int)transform.position.y / manager.floorHeight + 1;
     }
 
@@ -75,6 +83,7 @@ public class PlayerMove : MonoBehaviour
 
     void Jump()
     {
+        // 점프 1/3 - 점프 준비 시작
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             jumpReady = true;
@@ -84,7 +93,7 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.sprite = jumpSprites[0];
         }
 
-
+        // 점프 2/3 - 점프 준비
         if (Input.GetKey(KeyCode.Space) && jumpReady)
         {
             if (jumpPower < 100)
@@ -105,8 +114,10 @@ public class PlayerMove : MonoBehaviour
             arrow.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 90 - jumpDistance * 45 / 100);
         }
 
+        // 점프 3/3 - 점프 준비 끝, 점프 완료
         if (Input.GetKeyUp(KeyCode.Space) && jumpReady)
         {
+            // 점프력이 낮을 때 점프 방지
             if (jumpPower > 20)
             {
                 spriteRenderer.sprite = jumpSprites[1];
@@ -138,6 +149,12 @@ public class PlayerMove : MonoBehaviour
             isJumping = false;
             anim.enabled = true;
         }
+
+        else if (collision.transform.tag == "Goal")
+        {
+            PlayerPrefs.SetInt("clear", 1);
+            SceneManager.LoadScene(0);
+        } 
     }
 
     private void OnTriggerEnter(Collider other)

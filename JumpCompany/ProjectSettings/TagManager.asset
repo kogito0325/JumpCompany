@@ -9,6 +9,7 @@ TagManager:
   - FloorGround
   - GameManager
   - FloorLine
+  - Goal
   layers:
   - Default
   - TransparentFX

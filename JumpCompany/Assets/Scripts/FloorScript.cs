@@ -5,10 +5,13 @@ using UnityEngine;
 public class FloorScript : MonoBehaviour
 {
     public GameObject[] settableObjects;
-    public GameObject[] Obstacles;
+    public GameObject[] obstacles;
+    public GameObject[] walls;
     public GameObject floor;
     public Transform setPosition;
+
     public int last_pos_x_index;
+    public int floorNumber;
 
 
     int[] x_line1 = new int[3] { -6, 0, 6 };
@@ -16,11 +19,13 @@ public class FloorScript : MonoBehaviour
 
     private void Awake()
     {
-
+        floorNumber = GameManager.instance == null ? 1 : GameManager.instance.floorNumber;
+        GetComponent<FloorScript>().enabled = true;
     }
 
     void Start()
     {
+        // 오브젝트 생성 - 4개
         last_pos_x_index = PlayerPrefs.GetInt("posX");
         for (int i = 0; i < 4; i++)
         {
@@ -28,18 +33,22 @@ public class FloorScript : MonoBehaviour
         }
         PlayerPrefs.SetInt("posX", last_pos_x_index);
 
+        // 장애물 생성 - 컵
         if (Random.Range(0, 5) < 5)
-            Instantiate(Obstacles[0], new Vector3(Random.Range(-4f, 4f), setPosition.position.y, setPosition.position.z), Quaternion.identity, setPosition);
+            Instantiate(obstacles[0], new Vector3(Random.Range(-4f, 4f), setPosition.position.y, setPosition.position.z), Quaternion.identity, setPosition);
         
 
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        if (GameManager.instance.score > floorNumber + 5)
+        {
+            Destroy(gameObject);
+        }
     }
+
     Vector3 SetObjectsPosition(int i)
     {
         int pos_x_index;

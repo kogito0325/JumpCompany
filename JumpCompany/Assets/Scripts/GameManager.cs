@@ -7,35 +7,49 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] characters;
+    public Material[] backGrounds;
     public GameObject floor;
-    public GameObject nowCharacter;
-    public Text scoreText;
+    public GameObject bossFloor;
+    public GameObject[] scoreText;
+    public Sprite[] numbers;
+
+    public static GameManager instance;
 
     public int floorNumber = 1;
-    public int previousScore = 0;
-    public int score = 0;
+    public int previousScore;
+    public int score;
+    public int goal;
+    public bool goalCut;
     public int floorHeight = 14;
 
     void Awake()
     {
+        instance = this;
+
         foreach (var character in characters)
         {
             character.SetActive(false);
         }
 
         characters[PlayerPrefs.GetInt("character")].SetActive(true);
-        nowCharacter = characters[PlayerPrefs.GetInt("character")];
+        goal = PlayerPrefs.GetInt("character") == 0 ? 5 : PlayerPrefs.GetInt("character") * 10;
 
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         previousScore = 0;
         score = 0;
+        goalCut = false;
         UpdateScoreText();
-        for (int i = 1; i <= 4; i++)
+        for (int i = 1; i <= 2; i++)
         {
             floorNumber++;
+            foreach (var wall in floor.GetComponent<FloorScript>().walls)
+            {
+                wall.SetActive(false);
+            }
+            floor.GetComponent<FloorScript>().walls[(floorNumber - 1) % 5].SetActive(true);
             Instantiate(floor, new Vector3(0, floorHeight * (score + i), -7), Quaternion.identity);
         }
 
@@ -55,12 +69,26 @@ public class GameManager : MonoBehaviour
     void BuildNewFloor()
     {
         floorNumber++;
-        if ((floorNumber - 1) % 5 == 0)
+        if (floorNumber - 1 == goal)
         {
-            floor.GetComponent<FloorScript>().floor.SetActive(true);
+            goalCut = true;
+            Instantiate(bossFloor, new Vector3(0, floorHeight * (score + 2), -7), Quaternion.identity);
         }
-        Instantiate(floor, new Vector3(0, floorHeight * (score + 4), -7), Quaternion.identity);
-        floor.GetComponent<FloorScript>().floor.SetActive(false);
+
+        if (!goalCut)
+        {
+            if ((floorNumber - 1) % 5 == 0)
+            {
+                floor.GetComponent<FloorScript>().floor.SetActive(true);
+            }
+            foreach (var wall in floor.GetComponent<FloorScript>().walls)
+            {
+                wall.SetActive(false);
+            }
+            floor.GetComponent<FloorScript>().walls[(floorNumber - 1) % 5].SetActive(true);
+            Instantiate(floor, new Vector3(0, floorHeight * (score + 2), -7), Quaternion.identity);
+            floor.GetComponent<FloorScript>().floor.SetActive(false);
+        }
     }
 
     void CheckNextFloor()
@@ -90,6 +118,7 @@ public class GameManager : MonoBehaviour
                     PlayerPrefs.SetInt("chracter_4", score);
                     break;
             }
+            Debug.Log(PlayerPrefs.GetInt("chracter_" + PlayerPrefs.GetInt("character").ToString()));
             BuildNewFloor();
         }
         UpdateScoreText();
@@ -97,6 +126,26 @@ public class GameManager : MonoBehaviour
 
     void UpdateScoreText()
     {
-        scoreText.text = score.ToString() + "Ãþ";
+        int scoreNum = score;
+        if (score >= goal)
+            scoreNum = goal;
+
+        foreach (var s in scoreText)
+        {
+            s.SetActive(false);
+        }
+        scoreText[0].GetComponent<Image>().sprite = numbers[scoreNum / 100];
+        scoreText[1].GetComponent<Image>().sprite = numbers[(scoreNum - scoreNum / 100 * 100) / 10];
+        scoreText[2].GetComponent<Image>().sprite = numbers[scoreNum - (scoreNum - scoreNum / 100 * 100) / 10 * 10];
+
+        if (scoreNum >= 0)
+        {
+            scoreText[3].SetActive(true);
+            scoreText[2].SetActive(true);
+        }
+        if (scoreNum >= 10)
+            scoreText[1].SetActive(true);
+        if (scoreNum >= 100)
+            scoreText[0].SetActive(true);
     }
 }
