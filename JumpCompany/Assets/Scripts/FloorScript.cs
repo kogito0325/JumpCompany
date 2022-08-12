@@ -36,6 +36,8 @@ public class FloorScript : MonoBehaviour
         // 장애물 생성 - 컵
         if (Random.Range(0, 5) < 5)
             Instantiate(obstacles[0], new Vector3(Random.Range(-4f, 4f), setPosition.position.y, setPosition.position.z), Quaternion.identity, setPosition);
+
+        
         
 
 

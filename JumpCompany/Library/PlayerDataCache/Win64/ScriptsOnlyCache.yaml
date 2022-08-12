@@ -1,14 +1,18 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BagScript
     - CameraMove
     - ChangeImgManager
+    - CupScript
     - FloorScript
     - GameManager
-    - MainUI
+    - PapersScript
     - PlayerMove
     - Soundmanager
     - Tester
+    - UIBtnManager
+    - UISceneManager
     Unity.CollabProxy.Editor.dll:
     - Unity.Cloud.Collaborate.UserInterface.CollaborateWindow
     Unity.Rider.Editor.dll:
@@ -71,26 +75,30 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 1478}
+    - Class: 114
       Script: {instanceID: 1900}
     - Class: 114
-      Script: {instanceID: 2018}
+      Script: {instanceID: 2094}
     - Class: 114
-      Script: {instanceID: 2324}
+      Script: {instanceID: 2326}
     - Class: 114
-      Script: {instanceID: 2440}
+      Script: {instanceID: 2444}
     - Class: 114
-      Script: {instanceID: 2616}
+      Script: {instanceID: 2620}
     - Class: 114
-      Script: {instanceID: 2634}
+      Script: {instanceID: 2638}
     - Class: 114
-      Script: {instanceID: 2804}
+      Script: {instanceID: 2808}
     - Class: 114
-      Script: {instanceID: 3958}
+      Script: {instanceID: 3764}
     - Class: 114
-      Script: {instanceID: 4180}
+      Script: {instanceID: 3860}
+    - Class: 114
+      Script: {instanceID: 3966}
+    - Class: 114
+      Script: {instanceID: 4188}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 128
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -144,21 +152,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2018}
     - Class: 114
-      Script: {instanceID: 2324}
+      Script: {instanceID: 2326}
     - Class: 114
-      Script: {instanceID: 2440}
+      Script: {instanceID: 2406}
     - Class: 114
-      Script: {instanceID: 2616}
+      Script: {instanceID: 2444}
     - Class: 114
-      Script: {instanceID: 2804}
+      Script: {instanceID: 2620}
     - Class: 114
-      Script: {instanceID: 2814}
+      Script: {instanceID: 2808}
     - Class: 114
-      Script: {instanceID: 2826}
+      Script: {instanceID: 2818}
     - Class: 114
-      Script: {instanceID: 2894}
+      Script: {instanceID: 2830}
     - Class: 114
-      Script: {instanceID: 4214}
+      Script: {instanceID: 2898}
+    - Class: 114
+      Script: {instanceID: 4222}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -288,6 +298,12 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
+      Hash: 92dc6c1c5a10f38920dbeafc5d109595
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CupScript
+  - hash:
+      serializedVersion: 2
       Hash: c1d728126ff1918728036c59106d32b2
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -298,6 +314,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 0979e7c015f915dde73cfb6d59baf3e0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UISceneManager
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -399,7 +421,7 @@ ScriptsOnlyBuild:
       Hash: bd1e31865b42845aabef503fa0eca95d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: MainUI
+    className: UIBtnManager
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -564,6 +586,12 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: 716cece83e55f5bc3ff58ef1c25026b7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PapersScript
+  - hash:
+      serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -588,7 +616,13 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: 04c97914a48781a5b32ad8f91b18e7d3
+      Hash: e5fa2114e78afc976ba8f53725964cf0
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BagScript
+  - hash:
+      serializedVersion: 2
+      Hash: b6ec26d985501a1755b8cef6c65ec804
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -612,7 +646,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: e9386d034bebfe6fdefea0781b717397
+      Hash: b3b885842e32db028e740c619b9f00cf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FloorScript
