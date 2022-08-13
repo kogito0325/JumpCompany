@@ -903,13 +903,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settableObjects:
+  - {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
+  - {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
   - {fileID: 3894723377137430371, guid: d16c76dbe7a9a4444ae374fb4977ddbc, type: 3}
-  - {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
-  - {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
   - {fileID: 3155022045503253406, guid: acc1dc1ba8b0e8648b5eb2a51a2bcbc2, type: 3}
   - {fileID: 4760158436111964825, guid: 1470aa06ce6abcd43a18f0b281976950, type: 3}
   obstacles:
   - {fileID: 1609740747081417249, guid: c9fd1d0344277334492903ebe5839433, type: 3}
+  - {fileID: 4818848198513392974, guid: b7bfd8e0c2597874fbf5486b609c1e90, type: 3}
+  - {fileID: 2539132845001718778, guid: a23d64cf69175f341a1c6b5ba7bc231c, type: 3}
   walls:
   - {fileID: 950547173137546449}
   - {fileID: 1518975898156376027}

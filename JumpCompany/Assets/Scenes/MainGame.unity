@@ -1241,13 +1241,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settableObjects:
+  - {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
+  - {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
   - {fileID: 3894723377137430371, guid: d16c76dbe7a9a4444ae374fb4977ddbc, type: 3}
-  - {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
-  - {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
   - {fileID: 3155022045503253406, guid: acc1dc1ba8b0e8648b5eb2a51a2bcbc2, type: 3}
   - {fileID: 4760158436111964825, guid: 1470aa06ce6abcd43a18f0b281976950, type: 3}
   obstacles:
   - {fileID: 1609740747081417249, guid: c9fd1d0344277334492903ebe5839433, type: 3}
+  - {fileID: 4818848198513392974, guid: b7bfd8e0c2597874fbf5486b609c1e90, type: 3}
+  - {fileID: 2539132845001718778, guid: a23d64cf69175f341a1c6b5ba7bc231c, type: 3}
   walls:
   - {fileID: 4604855059247267839}
   - {fileID: 2865065967358516469}
@@ -1717,9 +1719,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1484635845}
-  - component: {fileID: 1484635846}
-  - component: {fileID: 1484635847}
-  - component: {fileID: 1484635844}
   m_Layer: 0
   m_Name: ObstacleManager
   m_TagString: Untagged
@@ -1727,20 +1726,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1484635844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484635843}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ec22e439ebca3c4d8d725d942d0f2ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Drawer: {fileID: 8019034599151724160, guid: 38548f1a0de7cf14db9ca80b03e0e8ec, type: 3}
-  Papers: {fileID: 4818848198513392974, guid: b7bfd8e0c2597874fbf5486b609c1e90, type: 3}
 --- !u!4 &1484635845
 Transform:
   m_ObjectHideFlags: 0
@@ -1755,33 +1740,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1484635846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484635843}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 925009041e986db4ab598eaa1945826d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigid: {fileID: 0}
---- !u!114 &1484635847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484635843}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1a58f1dbf8c1b4899814e35bfc8672, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Desk: {fileID: 2417861468248812812, guid: a6abe010aa9e49747b457e02ca7db314, type: 3}
-  Bag: {fileID: 2539132845001718778, guid: a23d64cf69175f341a1c6b5ba7bc231c, type: 3}
 --- !u!1 &1704299889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4013765071569482859, guid: 4d5bdf3fa46923a47b47631650863dec, type: 3}

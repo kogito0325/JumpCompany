@@ -1,7 +1,6 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - BagScript
     - CameraMove
     - ChangeImgManager
     - CupScript
@@ -75,30 +74,30 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1478}
+      Script: {instanceID: 1510}
     - Class: 114
-      Script: {instanceID: 1900}
+      Script: {instanceID: 1932}
     - Class: 114
-      Script: {instanceID: 2094}
+      Script: {instanceID: 2126}
     - Class: 114
-      Script: {instanceID: 2326}
+      Script: {instanceID: 2358}
     - Class: 114
-      Script: {instanceID: 2444}
+      Script: {instanceID: 2476}
     - Class: 114
-      Script: {instanceID: 2620}
+      Script: {instanceID: 2652}
     - Class: 114
-      Script: {instanceID: 2638}
+      Script: {instanceID: 2670}
     - Class: 114
-      Script: {instanceID: 2808}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 3764}
+      Script: {instanceID: 3796}
     - Class: 114
-      Script: {instanceID: 3860}
+      Script: {instanceID: 3998}
     - Class: 114
-      Script: {instanceID: 3966}
-    - Class: 114
-      Script: {instanceID: 4188}
+      Script: {instanceID: 4220}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 134
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -139,36 +138,38 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1478}
+      Script: {instanceID: 1510}
     - Class: 114
-      Script: {instanceID: 1778}
+      Script: {instanceID: 1810}
     - Class: 114
-      Script: {instanceID: 1940}
+      Script: {instanceID: 1972}
     - Class: 114
-      Script: {instanceID: 2018}
+      Script: {instanceID: 2050}
     - Class: 114
-      Script: {instanceID: 2326}
+      Script: {instanceID: 2358}
     - Class: 114
-      Script: {instanceID: 2406}
+      Script: {instanceID: 2438}
     - Class: 114
-      Script: {instanceID: 2444}
+      Script: {instanceID: 2476}
     - Class: 114
-      Script: {instanceID: 2620}
+      Script: {instanceID: 2652}
     - Class: 114
-      Script: {instanceID: 2808}
+      Script: {instanceID: 2840}
     - Class: 114
-      Script: {instanceID: 2818}
+      Script: {instanceID: 2850}
     - Class: 114
-      Script: {instanceID: 2830}
+      Script: {instanceID: 2862}
     - Class: 114
-      Script: {instanceID: 2898}
+      Script: {instanceID: 2930}
     - Class: 114
-      Script: {instanceID: 4222}
+      Script: {instanceID: 4254}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -586,7 +587,7 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 716cece83e55f5bc3ff58ef1c25026b7
+      Hash: a7c8dcf6427b18cd8b427b571509f7d9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PapersScript
@@ -614,12 +615,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Settings
-  - hash:
-      serializedVersion: 2
-      Hash: e5fa2114e78afc976ba8f53725964cf0
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BagScript
   - hash:
       serializedVersion: 2
       Hash: b6ec26d985501a1755b8cef6c65ec804

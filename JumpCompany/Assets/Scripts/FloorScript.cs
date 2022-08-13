@@ -29,7 +29,23 @@ public class FloorScript : MonoBehaviour
         last_pos_x_index = PlayerPrefs.GetInt("posX");
         for (int i = 0; i < 4; i++)
         {
-            Instantiate(settableObjects[Random.Range(0, settableObjects.Length)], SetObjectsPosition(i), Quaternion.Euler(0, 90, 0), setPosition);
+            int objIndex = Random.Range(0, settableObjects.Length);
+            Vector3 objVector = SetObjectsPosition(i);
+            Instantiate(settableObjects[objIndex], objVector, Quaternion.Euler(0, 90, 0), setPosition);
+
+            // 책상 위 장애물 생성 로직
+            int probability = Random.Range(0, 3);
+            if (objIndex < 2)
+            {
+                // 장애물 생성 - 종이
+                if (probability < 3)
+                    Instantiate(obstacles[1], objVector + new Vector3(Random.Range(0, 2f), 1.2f, 0), Quaternion.Euler(0, 30, 0), setPosition);
+
+                // 장애물 생성 - 가방
+                else if (probability == 1)
+                    Instantiate(obstacles[2], objVector + new Vector3(0, 1.2f, 0), Quaternion.Euler(0, 30, 0), setPosition);
+
+            }
         }
         PlayerPrefs.SetInt("posX", last_pos_x_index);
 
