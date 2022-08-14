@@ -5,6 +5,10 @@ using UnityEngine;
 public class UISceneManager : MonoBehaviour
 {
     public GameObject clearScreen;
+    public Soundmanager soundManager;
+
+    public AudioClip clear;
+    public AudioClip click;
 
     void Start()
     {

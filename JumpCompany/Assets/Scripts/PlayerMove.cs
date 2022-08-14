@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     Animator anim;
     SpriteRenderer spriteRenderer;
     BoxCollider boxCollider;
+    AudioSource audioSource;
     
     public GameManager manager;
     public Sprite[] jumpSprites;
@@ -21,13 +22,16 @@ public class PlayerMove : MonoBehaviour
     private bool isJumping;
     private bool jumpReady;
 
+    public AudioClip audioJump;
+    public AudioClip audioClear;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider>();
-
+        audioSource = GetComponent<AudioSource>();
 
         isJumping = false;
         jumpReady = false;
@@ -52,6 +56,22 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.sprite = jumpSprites[2];
             boxCollider.isTrigger = false;
         }
+    }
+
+    void PlaySound(string action)
+    {
+        audioSource.volume = DataManager.instance.soundVolume;
+        switch (action)
+        {
+            case "Jump":
+                audioSource.clip = audioJump;
+                break;
+
+            case "Clear":
+                audioSource.clip = audioClear;
+                break;
+        }
+        audioSource.Play();
     }
 
     void Move()
@@ -124,6 +144,7 @@ public class PlayerMove : MonoBehaviour
                     spriteRenderer.flipX = false;
 
                 rigid.AddForce(new Vector3(jumpDistance, jumpPower), ForceMode.Impulse);
+                PlaySound("Jump");
                 boxCollider.isTrigger = true;
                 isJumping = true;
             }
@@ -149,9 +170,30 @@ public class PlayerMove : MonoBehaviour
 
         else if (collision.transform.tag == "Goal")
         {
-            PlayerPrefs.SetInt("clear", 1);
-            manager.SceneChange();
+            rigid.velocity = Vector3.zero;
+            boxCollider.enabled = false;
+            rigid.useGravity = false;
+            spriteRenderer.flipX = true;
+            anim.enabled = true;
+
+            GetComponent<PlayerMove>().enabled = false;
+            
+            StartCoroutine("Wait");
         } 
+    }
+
+    IEnumerator Wait()
+    {
+        rigid.velocity = Vector3.zero;
+        yield return new WaitForSeconds(1.0f);
+        transform.localScale = transform.localScale * 1.5f;
+        transform.position = new Vector3(0, GameManager.instance.goal * 14 + 3.8f, 0);
+        Instantiate(manager.crown, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        yield return new WaitForSeconds(3.0f);
+        PlaySound("Clear");
+        yield return new WaitForSeconds(3.0f);
+        PlayerPrefs.SetInt("clear", 1);
+        manager.SceneChange();
     }
 
     private void OnTriggerEnter(Collider other)

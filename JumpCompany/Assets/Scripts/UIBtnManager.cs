@@ -40,6 +40,8 @@ public class UIBtnManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public GameObject nowBGM;
     public GameObject nowSE;
 
+    public ChangeImgManager changeImgManager;
+
 
     public void ChangeBGMMuteSprite()
     {
@@ -130,6 +132,15 @@ public class UIBtnManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             case BtnType.Reset:
                 PlayerPrefs.DeleteAll();
                 DataManager.instance.scores = new int[] { 0, 0, 0, 0, 0 };
+                
+                DataManager.instance.soundVolume = 0.5f;
+                DataManager.instance.bgmVolume = 0.5f;
+
+                BGMsource.volume = 0.5f;
+                SEsource.volume = 0.5f;
+
+                changeImgManager.characterIndex = 0;
+                changeImgManager.ChangeCharacter();
                 break;
 
             case BtnType.Arrow:

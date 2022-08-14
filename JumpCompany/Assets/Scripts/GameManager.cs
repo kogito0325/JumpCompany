@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] scoreText;
     public Sprite[] numbers;
     public GameObject nowChracter;
+    public GameObject crown;
 
     public static GameManager instance;
 

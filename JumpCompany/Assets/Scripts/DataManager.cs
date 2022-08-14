@@ -8,6 +8,8 @@ public class DataManager : MonoBehaviour
 
     public int playerIndex;
     public int[] scores;
+    public float bgmVolume;
+    public float soundVolume;
 
     private void Awake()
     {
@@ -37,6 +39,9 @@ public class DataManager : MonoBehaviour
             PlayerPrefs.GetInt("Nam", 0), 
             PlayerPrefs.GetInt("Son", 0)
         };
+
+        bgmVolume = PlayerPrefs.GetFloat("BGM");
+        soundVolume = PlayerPrefs.GetFloat("SE");
     }
 
     public void SaveData()
@@ -46,6 +51,10 @@ public class DataManager : MonoBehaviour
         PlayerPrefs.SetInt("Jo", scores[2]);
         PlayerPrefs.SetInt("Nam", scores[3]);
         PlayerPrefs.SetInt("Son", scores[4]);
+
+        PlayerPrefs.SetFloat("BGM", bgmVolume);
+        PlayerPrefs.SetFloat("SE", soundVolume);
+
         PlayerPrefs.Save();
     }
 

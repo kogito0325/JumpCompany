@@ -10,6 +10,8 @@ public class ChangeImgManager : MonoBehaviour
     public Sprite[] characters;
     public GameObject[] record;
     public Sprite[] numbers;
+    public GameObject selectBtn;
+
     public int characterIndex = 0;
     public int[] goals;
 
@@ -27,6 +29,16 @@ public class ChangeImgManager : MonoBehaviour
     {
         nowRecord.GetComponent<Image>().sprite = recordImages[characterIndex];
         nowCharacter.GetComponent<Image>().sprite = characters[characterIndex];
+        if (characterIndex > 0 && DataManager.instance.scores[characterIndex - 1] <= goals[characterIndex - 1])
+        {
+            nowCharacter.GetComponent<Image>().color = Color.black;
+            selectBtn.SetActive(false);
+        }
+        else
+        {
+            nowCharacter.GetComponent<Image>().color = Color.white;
+            selectBtn.SetActive(true);
+        }
         ChangeRecord();
     }
 

@@ -654,6 +654,7 @@ MonoBehaviour:
   SEMuteIndex: 1
   nowBGM: {fileID: 146363030}
   nowSE: {fileID: 862537879}
+  changeImgManager: {fileID: 0}
 --- !u!1 &209553885
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +799,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 0}
 --- !u!114 &212644711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,6 +1196,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 0}
 --- !u!114 &318207192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1413,7 +1416,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -10.399971, y: -4.000001}
+  m_AnchoredPosition: {x: -10, y: -4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &463920750
@@ -1553,6 +1556,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35f7af4af4803b8429965c492a9a3766, type: 3}
   - {fileID: 21300000, guid: ee35e2b263b70b94297952a352aeab2f, type: 3}
   - {fileID: 21300000, guid: 35c7370a842b47e44b72dc392c46619f, type: 3}
+  selectBtn: {fileID: 212644708}
   characterIndex: 0
   goals: 050000000a000000140000001e00000028000000
   nowRecord: {fileID: 1508542173}
@@ -1630,6 +1634,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 0}
 --- !u!114 &542524367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1955,6 +1960,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 0}
 --- !u!114 &611610536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,7 +2180,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -30.399971, y: -4.000001}
+  m_AnchoredPosition: {x: -30, y: -4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &803312744
@@ -2249,7 +2255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -15.399971, y: -4.000001}
+  m_AnchoredPosition: {x: -15, y: -4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &829282426
@@ -2355,6 +2361,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 0}
 --- !u!114 &858233984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2636,6 +2643,7 @@ MonoBehaviour:
   SEMuteIndex: 1
   nowBGM: {fileID: 146363030}
   nowSE: {fileID: 862537879}
+  changeImgManager: {fileID: 0}
 --- !u!1 &862895092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2670,7 +2678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -20, y: -4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &862895094
@@ -3111,6 +3119,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 0}
 --- !u!1 &978154923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3699,7 +3708,7 @@ GameObject:
   - component: {fileID: 1261867487}
   - component: {fileID: 1261867486}
   m_Layer: 5
-  m_Name: InstantResetBtn
+  m_Name: ResetBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3739,7 +3748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentType: 5
   ButtonScale: {fileID: 1261867485}
-  BGMsource: {fileID: 0}
+  BGMsource: {fileID: 1563011180}
   SEsource: {fileID: 139668549}
   Scrollbar: {fileID: 0}
   MainGroup: {fileID: 0}
@@ -3750,6 +3759,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 539515010}
 --- !u!114 &1261867487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3887,6 +3897,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIndex: 0
   scores: 0000000000000000000000000000000000000000
+  bgmVolume: 0
+  soundVolume: 0
 --- !u!4 &1310320798
 Transform:
   m_ObjectHideFlags: 0
@@ -4010,7 +4022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -25.399971, y: -4.000001}
+  m_AnchoredPosition: {x: -25, y: -4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1422726055
@@ -4195,6 +4207,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 0}
 --- !u!114 &1475719062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4712,6 +4725,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 0}
 --- !u!1 &1563011179
 GameObject:
   m_ObjectHideFlags: 0
@@ -4952,7 +4966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -5.4000015, y: -4}
+  m_AnchoredPosition: {x: -5, y: -4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1661978049
@@ -5169,6 +5183,7 @@ MonoBehaviour:
   SEMuteIndex: 0
   nowBGM: {fileID: 0}
   nowSE: {fileID: 0}
+  changeImgManager: {fileID: 0}
 --- !u!114 &1822277969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5575,6 +5590,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearScreen: {fileID: 1222365529}
+  soundManager: {fileID: 1977582207}
+  clear: {fileID: 8300000, guid: 34d3be4acb6e7014c831895fa35a7ba2, type: 3}
+  click: {fileID: 8300000, guid: 3f790be98497277458f42a55ce975677, type: 3}
 --- !u!1 &1955799778
 GameObject:
   m_ObjectHideFlags: 0

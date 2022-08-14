@@ -8,14 +8,22 @@ public class Soundmanager : MonoBehaviour
     public AudioSource BGMsource;
 
     public AudioSource SEsource;
-   
+
+    private void Start()
+    {
+        BGMsource.volume = DataManager.instance.bgmVolume;
+        SEsource.volume = DataManager.instance.soundVolume;
+    }
+
     public void SetBGMVolume(float volume)
     {
+        DataManager.instance.bgmVolume = volume;
         BGMsource.volume = volume;
     }
 
     public void SetSEvolume(float volume)
     {
+        DataManager.instance.soundVolume = volume;
         SEsource.volume = volume;
     }
 
