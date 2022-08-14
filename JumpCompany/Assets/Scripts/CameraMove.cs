@@ -9,7 +9,7 @@ public class CameraMove : MonoBehaviour
 
     private void Start()
     {
-        target = characters[PlayerPrefs.GetInt("character")].transform;
+        target = characters[DataManager.instance.playerIndex].transform;
     }
 
     private void LateUpdate()

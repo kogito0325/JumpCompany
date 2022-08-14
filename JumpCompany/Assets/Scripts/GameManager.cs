@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour
 {
     public GameObject[] characters;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject bossFloor;
     public GameObject[] scoreText;
     public Sprite[] numbers;
+    public GameObject nowChracter;
 
     public static GameManager instance;
 
@@ -21,8 +23,9 @@ public class GameManager : MonoBehaviour
     public int goal;
     public bool goalCut;
     public int floorHeight = 14;
+    public int bestScore;
 
-    void Awake()
+    public void Awake()
     {
         instance = this;
 
@@ -31,12 +34,16 @@ public class GameManager : MonoBehaviour
             character.SetActive(false);
         }
 
-        characters[PlayerPrefs.GetInt("character")].SetActive(true);
-        goal = PlayerPrefs.GetInt("character") == 0 ? 5 : PlayerPrefs.GetInt("character") * 10;
+        characters[DataManager.instance.playerIndex].SetActive(true);
+        nowChracter = characters[DataManager.instance.playerIndex];
+
+        goal = DataManager.instance.playerIndex == 0 ? 5 : DataManager.instance.playerIndex * 10;
+        
+        bestScore = DataManager.instance.scores[DataManager.instance.playerIndex];
 
     }
 
-    void Start()
+    public void Start()
     {
         previousScore = 0;
         score = 0;
@@ -52,27 +59,35 @@ public class GameManager : MonoBehaviour
             floor.GetComponent<FloorScript>().walls[(floorNumber - 1) % 5].SetActive(true);
             Instantiate(floor, new Vector3(0, floorHeight * (score + i), -7), Quaternion.identity);
         }
-
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         // 게임 종료
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(0);
+            SceneChange();
         }
+        score = (int)nowChracter.transform.position.y / floorHeight + 1;
         CheckNextFloor();
+
     }
 
-    void BuildNewFloor()
+    public void BuildNewFloor()
     {
         floorNumber++;
         if (floorNumber - 1 == goal)
         {
-            goalCut = true;
-            Instantiate(bossFloor, new Vector3(0, floorHeight * (score + 2), -7), Quaternion.identity);
+            if (bestScore > goal)
+            {
+                goalCut = false;
+            }
+            else
+            {
+                Instantiate(bossFloor, new Vector3(0, floorHeight * (score + 2), -7), Quaternion.identity);
+                goalCut = true;
+            }
         }
 
         if (!goalCut)
@@ -91,61 +106,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void CheckNextFloor()
+    public void CheckNextFloor()
     {
         if (score > previousScore)
         {
             previousScore = score;
-            switch (PlayerPrefs.GetInt("character"))
-            {
-                case 0:
-                    PlayerPrefs.SetInt("chracter_0", score);
-                    break;
 
-                case 1:
-                    PlayerPrefs.SetInt("chracter_1", score);
-                    break;
-
-                case 2:
-                    PlayerPrefs.SetInt("chracter_2", score);
-                    break;
-
-                case 3:
-                    PlayerPrefs.SetInt("chracter_3", score);
-                    break;
-
-                case 4:
-                    PlayerPrefs.SetInt("chracter_4", score);
-                    break;
-            }
-            Debug.Log(PlayerPrefs.GetInt("chracter_" + PlayerPrefs.GetInt("character").ToString()));
+            if (bestScore < score)
+                DataManager.instance.scores[DataManager.instance.playerIndex] = score;
             BuildNewFloor();
         }
         UpdateScoreText();
     }
 
-    void UpdateScoreText()
+    public void UpdateScoreText()
     {
         int scoreNum = score;
-        if (score >= goal)
-            scoreNum = goal;
 
         foreach (var s in scoreText)
         {
             s.SetActive(false);
         }
         scoreText[0].GetComponent<Image>().sprite = numbers[scoreNum / 100];
-        scoreText[1].GetComponent<Image>().sprite = numbers[(scoreNum - scoreNum / 100 * 100) / 10];
-        scoreText[2].GetComponent<Image>().sprite = numbers[scoreNum - (scoreNum - scoreNum / 100 * 100) / 10 * 10];
 
-        if (scoreNum >= 0)
+        scoreNum = scoreNum - ((scoreNum / 100) * 100);
+        scoreText[1].GetComponent<Image>().sprite = numbers[scoreNum / 10];
+
+        scoreNum = scoreNum - ((scoreNum / 10) * 10);
+        scoreText[2].GetComponent<Image>().sprite = numbers[scoreNum];
+
+        if (score >= 0)
         {
             scoreText[3].SetActive(true);
             scoreText[2].SetActive(true);
         }
-        if (scoreNum >= 10)
+        if (score >= 10)
             scoreText[1].SetActive(true);
-        if (scoreNum >= 100)
+        if (score >= 100)
             scoreText[0].SetActive(true);
+    }
+
+    public void SceneChange()
+    {
+        SceneManager.LoadScene(0);
     }
 }

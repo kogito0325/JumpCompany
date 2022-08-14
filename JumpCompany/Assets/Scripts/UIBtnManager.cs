@@ -34,8 +34,8 @@ public class UIBtnManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public Sprite[] BGM;
     public Sprite[] SE;
-    public int BGMMuteIndex = 0;
-    public int SEMuteIndex = 0;
+    public int BGMMuteIndex = 1;
+    public int SEMuteIndex = 1;
 
     public GameObject nowBGM;
     public GameObject nowSE;
@@ -43,15 +43,18 @@ public class UIBtnManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void ChangeBGMMuteSprite()
     {
-        nowBGM.GetComponent<Image>().sprite = BGM[BGMMuteIndex];
+        if (nowBGM != null)
+            nowBGM.GetComponent<Image>().sprite = BGM[BGMMuteIndex];
     }
     public void ChangeSEMuteSprite()
     {
-        nowSE.GetComponent<Image>().sprite = SE[SEMuteIndex];
+        if (nowSE != null)
+            nowSE.GetComponent<Image>().sprite = SE[SEMuteIndex];
     }
     public void Start()
     {
-        defaultScale = ButtonScale.localScale;
+        if (ButtonScale != null)
+            defaultScale = ButtonScale.localScale;
         ChangeBGMMuteSprite();
         ChangeSEMuteSprite();
     }
@@ -126,6 +129,7 @@ public class UIBtnManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
             case BtnType.Reset:
                 PlayerPrefs.DeleteAll();
+                DataManager.instance.scores = new int[] { 0, 0, 0, 0, 0 };
                 break;
 
             case BtnType.Arrow:
@@ -154,11 +158,13 @@ public class UIBtnManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ButtonScale.localScale = defaultScale * 1.1f;
+        if (ButtonScale != null)
+            ButtonScale.localScale = defaultScale * 1.1f;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        ButtonScale.localScale = defaultScale;
+        if (ButtonScale != null)
+            ButtonScale.localScale = defaultScale;
     }
 }

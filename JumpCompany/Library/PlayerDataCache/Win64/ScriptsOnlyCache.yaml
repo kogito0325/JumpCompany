@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - CameraMove
     - ChangeImgManager
     - CupScript
+    - DataManager
     - FloorScript
     - GameManager
     - PapersScript
@@ -19,8 +20,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -62,6 +65,8 @@ ScriptsOnlyBuild:
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
@@ -138,6 +143,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -168,6 +175,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 2898}
     - Class: 114
       Script: {instanceID: 4220}
+    - Class: 114
+      Script: {instanceID: 32180}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -255,7 +264,7 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
-      Hash: d741d5ef98d48f3dc3e541c50c0380ed
+      Hash: 7023b497de6d289fff661dad3632ec38
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChangeImgManager
@@ -315,7 +324,7 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
-      Hash: 0979e7c015f915dde73cfb6d59baf3e0
+      Hash: c5273b52da08bf3393b714b1f5ee7646
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UISceneManager
@@ -615,7 +624,7 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: b6ec26d985501a1755b8cef6c65ec804
+      Hash: 797c30db7757f461cbc159eb4aa2e23e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -673,6 +682,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: dcd5f91607451a024b8bd67cb541cb3e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DataManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/UIScne.unity

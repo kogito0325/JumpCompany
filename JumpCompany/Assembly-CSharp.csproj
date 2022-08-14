@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\FloorScript.cs" />
     <Compile Include="Assets\Scripts\Soundmanager.cs" />
+    <Compile Include="Assets\Scripts\DataManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

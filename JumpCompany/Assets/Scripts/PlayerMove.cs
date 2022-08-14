@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-
+        Debug.Log(DataManager.instance.scores[DataManager.instance.playerIndex]);
     }
 
     void Update()
@@ -52,9 +52,6 @@ public class PlayerMove : MonoBehaviour
             spriteRenderer.sprite = jumpSprites[2];
             boxCollider.isTrigger = false;
         }
-
-        // ÇöÀç Ãþ °è»ê
-        manager.score = (int)transform.position.y / manager.floorHeight + 1;
     }
 
     void Move()
@@ -153,7 +150,7 @@ public class PlayerMove : MonoBehaviour
         else if (collision.transform.tag == "Goal")
         {
             PlayerPrefs.SetInt("clear", 1);
-            SceneManager.LoadScene(0);
+            manager.SceneChange();
         } 
     }
 
@@ -168,7 +165,6 @@ public class PlayerMove : MonoBehaviour
         if (other.transform.tag == "FloorGround" && rigid.velocity.y > 0)
         {
             other.GetComponent<BoxCollider>().isTrigger = false;
-
         }
     }
 }

@@ -39,11 +39,11 @@ public class FloorScript : MonoBehaviour
             {
                 // 厘局拱 积己 - 辆捞
                 if (probability == 0)
-                    Instantiate(obstacles[1], objVector + new Vector3(Random.Range(0, 2f), 1.2f, 0), Quaternion.Euler(0, 30, 0), setPosition);
+                    Instantiate(obstacles[1], objVector + new Vector3(Random.Range(0, 2f), 1.7f, 0), Quaternion.Euler(0, 30, 0), setPosition);
 
                 // 厘局拱 积己 - 啊规
                 else if (probability == 1)
-                    Instantiate(obstacles[2], objVector + new Vector3(0, 1.2f, 0), Quaternion.Euler(0, 30, 0), setPosition);
+                    Instantiate(obstacles[2], objVector + new Vector3(Random.Range(0, 2f), 1.3f, 0), Quaternion.Euler(0, 30, 0), setPosition);
 
             }
         }
