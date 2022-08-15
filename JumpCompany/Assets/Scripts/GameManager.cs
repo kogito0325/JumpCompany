@@ -86,9 +86,18 @@ public class GameManager : MonoBehaviour
         // ESC
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            settingScreen.alpha = 1;
-            settingScreen.blocksRaycasts = true;
-            settingScreen.interactable = true;
+            if (settingScreen.interactable == false)
+            {
+                settingScreen.alpha = 1;
+                settingScreen.blocksRaycasts = true;
+                settingScreen.interactable = true;
+            }
+            else
+            {
+                settingScreen.alpha = 0;
+                settingScreen.blocksRaycasts = false;
+                settingScreen.interactable = false;
+            }
         }
 
         // 점수계산
