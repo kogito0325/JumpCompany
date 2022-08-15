@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum BtnType
 {
@@ -13,7 +14,9 @@ public enum BtnType
     Arrow,
     Reset,
     Back,
-    Exit
+    Exit,
+    Quit
+
 }
 
 
@@ -148,6 +151,10 @@ public class UIBtnManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
             case BtnType.Exit:
                 Application.Quit();
+                break;
+
+            case BtnType.Quit:
+                SceneManager.LoadScene(0);
                 break;
 
         }

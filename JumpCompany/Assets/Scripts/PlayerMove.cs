@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
 
     public AudioClip audioJump;
     public AudioClip audioClear;
+    public AudioClip audioClick;
 
     void Awake()
     {
@@ -70,8 +71,17 @@ public class PlayerMove : MonoBehaviour
             case "Clear":
                 audioSource.clip = audioClear;
                 break;
+
+            case "Clik":
+                audioSource.clip = audioClick;
+                break;
         }
         audioSource.Play();
+    }
+
+    void Click()
+    {
+
     }
 
     void Move()
@@ -175,14 +185,15 @@ public class PlayerMove : MonoBehaviour
             rigid.useGravity = false;
             spriteRenderer.flipX = true;
             anim.enabled = true;
+            anim.SetBool("isWalk", false);
 
             GetComponent<PlayerMove>().enabled = false;
             
-            StartCoroutine("Wait");
-        } 
+            StartCoroutine("EndingAnimation");
+        }
     }
 
-    IEnumerator Wait()
+    IEnumerator EndingAnimation()
     {
         rigid.velocity = Vector3.zero;
         yield return new WaitForSeconds(1.0f);

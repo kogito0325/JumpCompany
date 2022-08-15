@@ -10,6 +10,11 @@ public class UISceneManager : MonoBehaviour
     public AudioClip clear;
     public AudioClip click;
 
+    private void Awake()
+    {
+        
+    }
+
     void Start()
     {
         if (PlayerPrefs.GetInt("clear") == 1)

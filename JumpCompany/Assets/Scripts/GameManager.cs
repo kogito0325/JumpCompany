@@ -16,6 +16,13 @@ public class GameManager : MonoBehaviour
     public GameObject nowChracter;
     public GameObject crown;
 
+    public AudioSource audioSource;
+    public AudioSource settingAudio;
+
+    public Sprite[] tutorials;
+    public GameObject tutorialScreen;
+    public CanvasGroup settingScreen; 
+
     public static GameManager instance;
 
     public int floorNumber = 1;
@@ -25,6 +32,8 @@ public class GameManager : MonoBehaviour
     public bool goalCut;
     public int floorHeight = 14;
     public int bestScore;
+    public int tutorialIndex;
+    public bool tutorialExist;
 
     public void Awake()
     {
@@ -42,6 +51,9 @@ public class GameManager : MonoBehaviour
         
         bestScore = DataManager.instance.scores[DataManager.instance.playerIndex];
 
+        audioSource.volume = DataManager.instance.bgmVolume;
+        settingAudio.volume = DataManager.instance.soundVolume;
+
     }
 
     public void Start()
@@ -49,6 +61,8 @@ public class GameManager : MonoBehaviour
         previousScore = 0;
         score = 0;
         goalCut = false;
+        tutorialIndex = 0;
+        tutorialExist = DataManager.instance.scores[0] <= 5 ? true : false;
         UpdateScoreText();
         for (int i = 1; i <= 2; i++)
         {
@@ -65,11 +79,19 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        // 게임 종료
+        // 튜토리얼
+        if (DataManager.instance.scores[0] <= 5)
+            Tutorial();
+        
+        // ESC
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneChange();
+            settingScreen.alpha = 1;
+            settingScreen.blocksRaycasts = true;
+            settingScreen.interactable = true;
         }
+
+        // 점수계산
         score = (int)nowChracter.transform.position.y / floorHeight + 1;
         CheckNextFloor();
 
@@ -145,6 +167,39 @@ public class GameManager : MonoBehaviour
             scoreText[1].SetActive(true);
         if (score >= 100)
             scoreText[0].SetActive(true);
+    }
+
+    public void Tutorial()
+    {
+        if (tutorialExist)
+        {
+            tutorialScreen.SetActive(true);
+            Image tutorialScreenImage = tutorialScreen.GetComponent<Image>();
+            tutorialScreenImage.sprite = tutorials[tutorialIndex];
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+            {
+                tutorialIndex++;
+                if (tutorialIndex >= tutorials.Length)
+                {
+                    tutorialIndex = tutorials.Length - 1;
+                    tutorialScreen.SetActive(false);
+                    tutorialExist = false;
+                }
+            }
+        }
+    }
+
+    public void SetBGMVolume(float volume)
+    {
+        DataManager.instance.bgmVolume = volume;
+        audioSource.volume = volume;
+    }
+
+    public void SetSEVolume(float volume)
+    {
+        DataManager.instance.soundVolume = volume;
+        settingAudio.volume = volume;
+        nowChracter.GetComponent<AudioSource>().volume = volume;
     }
 
     public void SceneChange()
